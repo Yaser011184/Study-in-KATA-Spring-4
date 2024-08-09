@@ -4,20 +4,13 @@ import javax.persistence.*;
 
 @Entity
 public class Car {
-
+    @Column(name = "model")
     private String model;
+    @Column(name = "series")
     private int series;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "model='" + model + '\'' +
-                ", series=" + series +
-                '}';
-    }
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
@@ -63,5 +56,13 @@ public class Car {
 
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "model='" + model + '\'' +
+                ", series=" + series +
+                '}';
     }
 }
